@@ -10,12 +10,14 @@ public class Solution {
     public boolean isValid(String s) {
         Deque<Integer> p = new ArrayDeque<>();
         for(int i = 0; i < s.length(); i++) {
-            int q = "(){}[]".indexOf(s.substring(i, i + 1));
-            if(q % 2 == 1) {
-                if(p.isEmpty() || p.pop() != q - 1){
-                    return false;
-                }
-            } else p.push(q);
+            int q = "(){}[]".indexOf(s.charAt(i));
+            if(q % 2 == 0){
+                p.push(q);
+                continue;
+            }
+            if(p.isEmpty() || p.pop() != q - 1){
+                return false;
+            }
         }
         return p.isEmpty();
     }

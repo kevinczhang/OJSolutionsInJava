@@ -5,7 +5,8 @@ public class Solution {
         int total = nums1.length + nums2.length;
         if (total % 2 != 0)
             return findKth(total / 2 + 1, nums1, nums2, 0, 0);
-        return (findKth(total / 2 + 1, nums1, nums2, 0, 0) + findKth(total / 2, nums1, nums2, 0, 0)) / 2.0;
+        return (findKth(total / 2 + 1, nums1, nums2, 0, 0) +
+                findKth(total / 2, nums1, nums2, 0, 0)) / 2.0;
     }
 
     public int findKth(int k, int[] nums1, int[] nums2, int s1, int s2) {
@@ -18,8 +19,8 @@ public class Solution {
         if (k == 1)
             return Math.min(nums1[s1], nums2[s2]);
 
+        // Try to find the k/2 th element from starting index
         int m1 = s1 + k / 2 - 1, m2 = s2 + k / 2 - 1;
-
         int mid1 = m1 < nums1.length ? nums1[m1] : Integer.MAX_VALUE;
         int mid2 = m2 < nums2.length ? nums2[m2] : Integer.MAX_VALUE;
 

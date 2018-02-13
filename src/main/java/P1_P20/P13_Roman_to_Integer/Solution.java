@@ -29,8 +29,7 @@ public class Solution {
             if((index+1 < len) && map.containsKey(s.substring(index, index+2))){
                 res += map.get(s.substring(index, index+2));
                 index += 2;
-            }
-            else{
+            } else {
                 res += map.get(s.substring(index, index+1));
                 index++;
             }
