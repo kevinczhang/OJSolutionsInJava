@@ -10,6 +10,7 @@ public class Solution {
         }
 
         Arrays.sort(nums);
+        // Map for first two indices of the numbers
         Map<Integer, List<Integer>> toMatch = new HashMap<>();
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -18,7 +19,6 @@ public class Solution {
                 if (toMatch.containsKey(toMatchInt)) {
                     tmpList = toMatch.get(toMatchInt);
                 }
-
                 tmpList.add(i);
                 tmpList.add(j);
                 toMatch.put(toMatchInt, tmpList);
