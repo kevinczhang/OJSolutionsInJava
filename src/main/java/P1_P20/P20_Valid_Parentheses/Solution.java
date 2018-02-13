@@ -8,17 +8,22 @@ import java.util.Deque;
  */
 public class Solution {
     public boolean isValid(String s) {
-        Deque<Integer> p = new ArrayDeque<>();
-        for(int i = 0; i < s.length(); i++) {
-            int q = "(){}[]".indexOf(s.charAt(i));
-            if(q % 2 == 0){
-                p.push(q);
+        // Stack to store parentheses indices
+        Deque<Integer> indexStack = new ArrayDeque<>();
+        for (int i = 0; i < s.length(); i++) {
+            // Find current char index
+            int curIndex = "(){}[]".indexOf(s.charAt(i));
+            // If index is even push to stack
+            if (curIndex % 2 == 0) {
+                indexStack.push(curIndex);
                 continue;
             }
-            if(p.isEmpty() || p.pop() != q - 1){
+            // Stack is empty or last parethese can't pair with cur one
+            if (indexStack.isEmpty() || indexStack.pop() != curIndex - 1) {
                 return false;
             }
         }
-        return p.isEmpty();
+        // Stack should be empty if it is valid
+        return indexStack.isEmpty();
     }
 }
